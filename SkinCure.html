@@ -1,311 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkinCureX - AI Powered Skin Diagnosis</title>
-    <!-- TensorFlow.js for ML model - corrected CDN link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/4.2.0/tf.min.js"></script>
-    <link rel="stylesheet" href="SkinCure.css">
-
-</head>
-
-<body>
+    <link rel="stylesheet" href="SkinCure.css" />
+  </head>
+  <body>
     <!-- Header -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <img style="height: 40px; width: 40px; border-radius: 20px;"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThB2nQgAA-CcWQnnHH4W4dI3ECmuL8SEffbw&s"
-                        alt="image">
-                    <div class="logo-text" style="color: #0c1b5c;">Skin<span class="logo-highlight"
-                            style="color: rgb(255, 0, 132);">Cure-X</span></div>
-                </div>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="#diagnostic" class="nav-link">Evaluation Tool</a></li>
-                    <li class="nav-item"><a href="#about-section" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-btn">☰</button>
-            </nav>
+    <header id="header">
+      <nav>
+        <div class="logo">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThB2nQgAA-CcWQnnHH4W4dI3ECmuL8SEffbw&s"
+            alt="SkinCureX"
+          />
+          <span>Skin<span style="color: var(--secondary)">CureX</span></span>
         </div>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#hero" class="nav-link">Home</a></li>
+          <li><a href="#diagnostic" class="nav-link">Evaluation</a></li>
+          <li><a href="#about-section" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="hero">
-        <div class="container2">
-            <h1 class="hero-title">AI-Powered Skin Condition Analysis</h1>
-            <p class="hero-subtitle">Upload a photo of your skin concern and receive instant AI analysis with treatment
-                recommendations from Ayurvedic and modern medicine.</p>
-            <a href="#diagnostic" class="btn btn-primary pulse">Test Your Skin Condition</a>
-            <a href="#about-section" class="btn btn-secondary">Learn More</a>
+      <div class="hero-content">
+        <h1 class="hero-title">AI-Powered Skin Condition Analysis</h1>
+        <p class="hero-subtitle">
+          Upload a photo of your skin concern and receive instant AI analysis
+          with treatment recommendations from Ayurvedic and modern medicine.
+        </p>
+        <div class="hero-buttons">
+          <a href="#diagnostic" class="btn btn-primary">
+            <span>Test Your Skin</span>
+            <span>→</span>
+          </a>
+          <a href="#about-section" class="btn btn-secondary">Learn More</a>
         </div>
+      </div>
     </section>
 
     <!-- Features Section -->
     <section class="features">
-        <div class="container">
-            <h2 class="section-title">Why Choose SkinCureX</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3 class="feature-title">Advanced Analysis</h3>
-                    <p class="feature-description">Our state-of-the-art AI can identify over 10+ skin conditions with
-                        high accuracy.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌿</div>
-                    <h3 class="feature-title">Ayurvedic Integration</h3>
-                    <p class="feature-description">Combines modern dermatology with traditional Ayurvedic remedies for
-                        holistic care.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Instant Results</h3>
-                    <p class="feature-description">Get analysis and recommendations within seconds, no appointment
-                        needed.</p>
-                </div>
-            </div>
+      <h2 class="section-title">Why Choose SkinCureX</h2>
+      <p class="section-subtitle">
+        Advanced technology meets holistic care for better skin health
+      </p>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🔍</div>
+          <h3 class="feature-title">Advanced Analysis</h3>
+          <p class="feature-description">
+            Our state-of-the-art AI can identify over 10+ skin conditions with
+            high accuracy using deep learning models.
+          </p>
         </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🌿</div>
+          <h3 class="feature-title">Ayurvedic Integration</h3>
+          <p class="feature-description">
+            Combines modern dermatology with traditional Ayurvedic remedies for
+            holistic care and natural healing.
+          </p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">Instant Results</h3>
+          <p class="feature-description">
+            Get analysis and recommendations within seconds, no appointment
+            needed. Fast, reliable, and convenient.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Diagnostic Tool -->
     <section id="diagnostic" class="diagnostic-tool">
-        <div class="container">
-            <h2 class="section-title">Skin Condition Evaluation Tool</h2>
-            <div class="tool-container">
-                <div id="upload-area" class="upload-area">
-                    <div class="upload-icon">📷</div>
-                    <p class="upload-text">Drag & drop a photo here or click to Upload Image</p>
-                    <input type="file" id="file-input" accept="image/*" style="display: none;">
-                    <button class="upload-btn">Upload Image</button>
-                </div>
-
-                <div id="preview-container" class="preview-container">
-                    <div class="image-preview">
-                        <img id="preview-img" class="preview-img" src="/api/placeholder/400/320" alt="Image preview">
-                    </div>
-                    <button id="analyze-btn" class="btn btn-primary">Analyze Skin Condition</button>
-                    <div id="loading-spinner" class="loading-spinner"></div>
-                    <div id="progress-container"
-                        style="display: none; width: 100%; max-width: 400px; margin-top: 1rem;">
-                        <div id="progress-text">Analyzing image...</div>
-                        <div class="progress-bar">
-                            <div id="progress" class="progress"></div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- Canvas element for image processing -->
-                <canvas id="processing-canvas" width="64" height="64"></canvas>
-
-                <div id="analysis-results" class="analysis-results">
-                    <h3 class="result-heading">Analysis Results</h3>
-
-                    <div id="diagnosis-container" class="diagnosis">
-                        <!-- This will be populated dynamically -->
-                    </div>
-
-                    <div class="disclaimer">
-                        <strong>Medical Disclaimer:</strong> This analysis is for informational purposes only and is not
-                        a substitute for professional medical advice. Please consult with a healthcare provider for
-                        proper diagnosis and treatment.
-                    </div>
-                </div>
-            </div>
+      <h2 class="section-title">Skin Condition Evaluation Tool</h2>
+      <p class="section-subtitle">
+        Upload an image to get started with your analysis
+      </p>
+      <div class="tool-container">
+        <div id="upload-area" class="upload-area">
+          <div class="upload-icon">📷</div>
+          <p class="upload-text">Drag & drop a photo here or click to upload</p>
+          <input
+            type="file"
+            id="file-input"
+            accept="image/*"
+            style="display: none"
+          />
+          <button class="upload-btn">Upload Image</button>
         </div>
+
+        <div id="preview-container" class="preview-container">
+          <div class="image-preview">
+            <img id="preview-img" class="preview-img" alt="Image preview" />
+          </div>
+          <button
+            id="analyze-btn"
+            class="btn btn-primary"
+            style="display: none"
+          >
+            Analyze Skin Condition
+          </button>
+          <div id="loading-spinner" class="loading-spinner"></div>
+          <div id="progress-container" class="progress-container">
+            <div id="progress-text">Analyzing image...</div>
+            <div class="progress-bar">
+              <div id="progress" class="progress"></div>
+            </div>
+          </div>
+        </div>
+
+        <canvas id="processing-canvas" width="64" height="64"></canvas>
+
+        <div id="analysis-results" class="analysis-results">
+          <h3 class="result-heading">Analysis Results</h3>
+          <div id="diagnosis-container"></div>
+          <div class="disclaimer">
+            <strong>⚠️ Medical Disclaimer:</strong> This analysis is for
+            informational purposes only and is not a substitute for professional
+            medical advice. Please consult with a healthcare provider for proper
+            diagnosis and treatment.
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- About section -->
-
+    <!-- About Section -->
     <section id="about-section">
-        <div class="ccontainer">
-            <div class="about-header">
-                <h1>Revolutionizing Skin Condition with AI</h1>
-                <p>At SkinCureX, we're combining advanced artificial intelligence with dermatological expertise to
-                    transform how people manage their skin health.</p>
-            </div>
-
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 style="text-align: center;">SkinCureX Mission</h2>
-                    
-                    <p style="text-align: center;">At SkinCureX, our mission is to revolutionize dermatological care by making early skin disease
-                        detection accessible, affordable, and reliable for everyone. We harness the power of machine
-                        learning and Android technology to deliver an intuitive, real-time prediction model that
-                        empowers users to identify common skin conditions through a simple mobile application. By
-                        integrating advanced image classification using TensorFlow Lite and providing features like
-                        real-time lesion analysis, dermatologist recommendations, and user-friendly interfaces, we aim
-                        to bridge the gap between patients and professional care, especially in underserved communities.
-                        SkinCureX is committed to continuous innovation, expanding its diagnostic capabilities, and
-                        enhancing healthcare accessibility to ensure healthier lives through early intervention.
-
-                    </p>
-                </div>
-                <div class="about-image">
-                    <img src="https://img.freepik.com/free-vector/dermatologist-concept-dermatology-specialist-face-skin-acne-treatment-idea-beauty-health-skin-epidermis-scheme-vector-illustration-cartoon-style_613284-2649.jpg?w=1480&t=st=1671299930~exp=1671300530~hmac=ce38e1fae8b9b893fa3c4a9573cc383d03598b94e6fde52eee93721676e5938b"
-                        alt="SkinCureX">
-                </div>
-            </div>
-
-            <div class="ffeatures">
-                <div class="ffeature-card">
-                    <div class="ffeature-icon">
-                        <i class="fas fa-camera-retro"></i>
-                    </div>
-                    <div class="ffeature-icon">🔍</div>
-                    <h3>Advanced Image Analysis</h3>
-                    <p>Our proprietary AI algorithms analyze skin images at a pixel level, detecting subtle patterns
-                        invisible to the naked eye that could indicate various skin conditions.</p>
-                </div>
-
-                <div class="ffeature-card">
-                    <div class="ffeature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="ffeature-icon">👨‍⚕️</div>
-                    <h3>AI-Powered Diagnostics</h3>
-                    <p>Using deep learning models trained on millions of dermatological cases, our system can identify
-                        over 200 different skin conditions with accuracy comparable to board-certified dermatologists.
-                    </p>
-                </div>
-
-                <div class="ffeature-card">
-                    <div class="ffeature-icon">
-                        <i class="fas fa-prescription-bottle-alt"></i>
-                    </div>
-                    <div class="ffeature-icon">📄</div>
-                    <h3>Personalized Treatment Plans</h3>
-                    <p>Based on your skin analysis, we provide customized treatment recommendations reviewed by medical
-                        professionals, ranging from over-the-counter solutions to prescription referrals.</p>
-                </div>
-            </div>
+      <h2 class="section-title">Revolutionizing Skin Care with AI</h2>
+      <p class="section-subtitle">
+        Combining advanced technology with holistic wellness
+      </p>
+      <div class="about-content fade-in">
+        <div class="about-text">
+          <h2>Our Mission</h2>
+          <p>
+            At SkinCureX, our mission is to revolutionize dermatological care by
+            making early skin disease detection accessible, affordable, and
+            reliable for everyone. We harness the power of machine learning to
+            deliver an intuitive, real-time prediction model that empowers users
+            to identify common skin conditions.
+          </p>
+          <p>
+            By integrating advanced image classification and providing features
+            like real-time lesion analysis, dermatologist recommendations, and
+            user-friendly interfaces, we aim to bridge the gap between patients
+            and professional care, especially in underserved communities.
+          </p>
         </div>
+        <div class="about-image">
+          <img
+            src="https://img.freepik.com/free-vector/dermatologist-concept-dermatology-specialist-face-skin-acne-treatment-idea-beauty-health-skin-epidermis-scheme-vector-illustration-cartoon-style_613284-2649.jpg"
+            alt="SkinCureX Mission"
+          />
+        </div>
+      </div>
     </section>
 
-    <!-- contact section -->
+    <!-- Contact Section -->
     <section id="contact">
-        <div class="section-header">
-            <h2>Contact Us</h2>
-            <p>Have questions or need assistance? Our team is here to help. Reach out to us using any of the methods
-                below.</p>
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>Have questions or need assistance? We're here to help</p>
+      </div>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <div class="info-item fade-in">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <h3>Our Address</h3>
+              <p>SkinCureX, 123 Main Street<br />City, Country</p>
+            </div>
+          </div>
+          <div class="info-item fade-in">
+            <div class="info-icon">📞</div>
+            <div class="info-content">
+              <h3>Call Us</h3>
+              <a href="tel:+917895800000">(+91) 78958xxxxx</a>
+              <p>Mon - Fri: 9:00 AM - 3:00 PM</p>
+            </div>
+          </div>
+          <div class="info-item fade-in">
+            <div class="info-icon">✉️</div>
+            <div class="info-content">
+              <h3>Email Us</h3>
+              <a href="mailto:info@skincurex.com">info@SkinCureX.com</a>
+              <p>We'll respond within 24 hours</p>
+            </div>
+          </div>
         </div>
 
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <div class="info-item">
-                    <div class="info-icon pulse">
-                        <i>📍</i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Our Address</h3>
-                        <p>SkinCureX, 123 Main Street<br> City, Country</p>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon pulse">
-                        <i>📞</i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Call Us</h3>
-                        <a href="#">(+91) 78958xxxx</a>
-                        <p>Mon - Fri: 9:00 AM - 3:00 PM</p>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon pulse">
-                        <i>✉️</i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Email Us</h3>
-                        <a href="#">info@SkinCureX.com</a>
-                        <p>We'll respond as soon as possible</p>
-                    </div>
-                </div>
+        <div class="contact-form fade-in">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required />
             </div>
-
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-
-                    <div class="form-group full">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-
-                    <button type="submit">Send Message</button>
-                </form>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" required />
             </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
         </div>
+      </div>
     </section>
-
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>SkinCureX</h3>
-                    <p>Bringing together AI technology and Ayurvedic wisdom for better skin health.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">f</a>
-                        <a href="#" class="social-link">X</a>
-                        <a href="#" class="social-link">in</a>
-                        <a href="#" class="social-link">ig</a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="#">Home</a></li>
-                        <li class="footer-link"><a href="#diagnostic">Diagnostic Tool</a></li>
-                        <li class="footer-link"><a href="#about">About Us</a></li>
-                        <li class="footer-link"><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="#">Skin Condition Library</a></li>
-                        <li class="footer-link"><a href="#">Ayurvedic Remedies</a></li>
-                        <li class="footer-link"><a href="#">Skincare Tips</a></li>
-                        <li class="footer-link"><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link">Email: info@SkinCureX.in</li>
-                        <li class="footer-link">Phone:(+91) 78958xxxx</li>
-                        <li class="footer-link">Address: SkinCureX, 123 Main Street, City, State</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2025 SkinCureX. All Rights Reserved.
-            </div>
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>SkinCureX</h3>
+          <p>
+            Bringing together AI technology and Ayurvedic wisdom for better skin
+            health.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">X</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">ig</a>
+          </div>
         </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#hero">Home</a></li>
+            <li class="footer-link">
+              <a href="#diagnostic">Diagnostic Tool</a>
+            </li>
+            <li class="footer-link"><a href="#about-section">About Us</a></li>
+            <li class="footer-link"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">Skin Conditions</a></li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                href="https://en.wikipedia.org/wiki/List_of_plants_used_in_herbalism"
+                >Ayurvedic Remedies</a
+              >
+            </li>
+            <li class="footer-link"><a href="#">Skincare Tips</a></li>
+            <li class="footer-link"><a href="FAQ.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Info</h3>
+          <ul class="footer-links">
+            <li class="footer-link">info@SkinCureX.com</li>
+            <li class="footer-link">(+91) 78958xxxxx</li>
+            <li class="footer-link">123 Main Street, City</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2025 SkinCureX. All Rights Reserved.</div>
     </footer>
-</body>
-<script src="yash.js"></script>
+
+    <script src="SkinCure.js"></script>
+  </body>
 </html>
